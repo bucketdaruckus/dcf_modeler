@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rawr xd</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+</head>
+<body>
+    <div id="search-container">
+        <form id="search-form">
+          <input type="text" id="search-input" placeholder="Enter stock ticker" required>
+        </form>
+    </div>
+    <section id="results-section" style="display: none;">
+        <h1 id="stock-ticker"></h1>
+        <span id="company-name" style="font-size: 24px; font-weight: normal;"></span>
+        <div style="display: flex; justify-content: space-between;">
+          <div id="financial-data" class="financial-data">
+            <div>
+              <p>Latest Stock Price: $<span id="last-closing-price">-</span></p>
+              <p>Shares Outstanding: <span id="shares-outstanding">-</span></p>
+              <p>Market Cap: $<span id="market-cap">-</span></p>
+            </div>
+            <div>
+              <h2>Income Statement</h2>
+              <span id="fiscal-date-ending"></span>
+              <p>Latest Revenue: $<span id="latest-revenue"></span></p>
+              <p>Cost of Goods Sold: $<span id="cost-of-goods-sold">-</span></p>
+              <p>Gross Margin: $<span id="gross-margin">-</span></p>
+              <p>Gross Margin (%): <span id="gross-margin-percentage">-</span></p>
+              <p>Net Income: $<span id="net-income">-</span></p>
+            </div>
+            <div id="cash-flow-section">
+              <h2>Cash Flow</h2>
+              <p>Cash Flows from Operations: $<span id="cash-flow-from-operations">-</span></p>
+              <p>Capital Expenditure: $<span id="capital-expenditure">-</span></p>
+              <p>Free Cash Flow: $<span id="free-cash-flow">-</span></p>
+            </div>
+            <div id="charts-container">
+              <div class="chart-wrapper">
+                <h3>Revenue vs. COGS</h3>
+                <canvas id="revenue-cogs-chart"></canvas>
+              </div>
+              <div class="chart-wrapper">
+                <h3>Cash From Ops vs. CapEx</h3>
+                <canvas id="cash-flow-chart"></canvas>
+              </div>
+            </div>
+          </div>
+          <div>
+            <section id="dcf-section">
+              <h2>Discounted Cash Flow Model</h2>
+              <form id="dcf-form">
+                <div class="input-wrapper">
+                  <label for="fcf">Free Cash Flow (FCF):</label>
+                  <input type="number" id="fcf" step="any" required>
+                </div>
+                <div class="input-wrapper">
+                  <label for="growth-rate">Growth Rate (%):</label>
+                  <input type="number" id="growth-rate" step="any" required>
+                </div>
+                <div class="input-wrapper">
+                  <label for="terminal-growth">Terminal Growth Rate (%):</label>
+                  <input type="number" id="terminal-growth" step="any" required>
+                </div>
+                <div class="input-wrapper">
+                  <label for="discount-rate">Discount Rate (%):</label>
+                  <input type="number" id="discount-rate" step="any" required>
+                </div>
+                <div class="input-wrapper">
+                  <label for="projection-years">Projection Years:</label>
+                  <input type="number" id="projection-years" min="1" required>
+                </div>
+                <button type="submit">Calculate Intrinsic Value</button>
+              </form>
+              <p>Intrinsic Value: $<span id="intrinsic-value">-</span></p>
+            </section>
+          </div>
+        </div>
+        <div>
+          <div id="company-description"></div>
+          <section id="news-section">
+            <h2>Related News</h2>
+            <ul id="news-container"></ul>
+          </section>
+        </div>
+    </section>
+    <script src="js/script.js"></script>
+</body>
+</html>
